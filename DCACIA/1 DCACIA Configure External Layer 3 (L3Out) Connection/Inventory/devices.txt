@@ -1,0 +1,4 @@
+version:5.2(1g)
+Spine: N9K-C9332C
+leaf-a: N9K-93180YC-FX
+leaf-b: N9K-93180YC-FX
