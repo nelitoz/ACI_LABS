@@ -1,0 +1,57 @@
+LAB DCACI 1 Configure External Layer 3 (L3Out)
+
+Configuraciones pre-definidas:
+
+Fisico:
+1. Switch Profile/Selector
+2. Int Profile
+
+Logico:
+1. Tenant
+	Sales
+2. VRF
+	Sales:Presales_VRF
+3. App profile
+4. EPG Static Binding
+5. DVS with Port-groups
+6. VMs with IP addressing. (10.0.3.x/24)
+
+
+Configuraciones a realizar:
+
+Fisico:
+1. Vlan Pool
+	vlan 51-60
+2. L3 Domain
+	Domain_L3Out
+3. AAEP
+	AAEP_L3Out
+4. IPG
+	IPG_L3Out_OSPF
+		LLDP enabled
+5. Int Selector
+	LEAF102_IFP>>INT_SELECT_1/1
+		Port:1/1
+		
+Logico:
+1. RR
+2. L3 Out
+	Clear the Use Defaults checkbox. 
+    Node Profile Name: L102
+    Layer 3: SVI.
+    Layer 2: Port
+    Node ID: leaf-b (Node-102)
+    Router ID: 10.1.1.1
+    Delete the Loopback Address. 
+    Interface: eth1/1
+    Interface Profile Name: OSPF_L3Out_interfaceProfile.
+    Encap: VLAN
+    VLAN ID: 51
+    MTU: 1500
+    IP Address: 172.16.1.1/30.
+3. Contrato consumir EPG_L3Out
+4. BD Subnet on the existing BD
+	DB_BD
+	10.0.3.254/24
+	Advertised Externally
+		
